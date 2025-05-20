@@ -1,0 +1,22 @@
+<form (ngSubmit)="addTransaction()">
+    <input type="number" name="amount" [(ngModel)]="newTransaction.amount" required/>
+    <select name="type" [(ngModel)]="newTransaction.type">
+        <option value="credit">Credit</option>
+        <option value="debit">Debit</option>
+    </select>
+    <button type="button" class="btn-btn-primary">Add</button>
+</form>
+
+<select [(ngModel)]="filterType" (change)="loadTransactions()">
+  <option value="">All</option>
+  <option value="credit">Credit</option>
+  <option value="debit">Debit</option>
+</select>
+
+<table>
+    <tr *ngFor = "let t of transactions">
+        <td>{{t.amount}}</td>
+        <td>{{t.type}}</td>
+        <td>{{t.timestamp}}</td>
+    </tr>
+</table>
